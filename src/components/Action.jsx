@@ -16,7 +16,7 @@ export const Action = ({ genreId }) => {
   const handlePrevClick = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      
+
     }
   };
 

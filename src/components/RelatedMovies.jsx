@@ -16,7 +16,6 @@ export const RelatedMovies = ({ relatedMovies }) => {
                                     alt={relatedMovie.title}
                                 /></Link>
                                 <h5 className="card-title">{relatedMovie.title}</h5>
-                               
                             </div>
                         ))}
                     </div>

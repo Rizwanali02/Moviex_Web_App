@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LoadingSpin } from './LoadingSpin';
+import { useParams } from 'react-router-dom';
 
 export const MovieList = () => {
   const [movieData, setMovieData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const { query } = useParams();
 
   const getMovies = async (page) => {
-    let API = `https://api.themoviedb.org/3/discover/movie?api_key=04c35731a5ee918f014970082a0088b1&page=${page}`;
+    let API;
+ 
+      API = `https://api.themoviedb.org/3/discover/movie?api_key=04c35731a5ee918f014970082a0088b1&page=${page}`;
+    
+
     const res = await fetch(API);
     const data = await res.json();
     setMovieData(data.results);
@@ -15,14 +21,11 @@ export const MovieList = () => {
 
   useEffect(() => {
     getMovies(currentPage);
-  }, [currentPage]);
+  }, [currentPage, query]);
 
   const handleNextClick = () => {
     setCurrentPage(currentPage + 1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if(!movieData){
-      return <LoadingSpin/>
-    }
   };
 
   const handlePrevClick = () => {

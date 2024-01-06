@@ -6,6 +6,8 @@ import MovieDetails from './components/MovieDetails';
 import { Header } from './components/Header';
 import { Action } from './components/Action';
 import { Types } from './components/Types';
+import SearchResults from './components/SearchResults';
+import { Footer } from './components/Footer';
 
 const NotFound = () => {
   return <h2>404 - Not Found</h2>;
@@ -18,6 +20,7 @@ const App = () => {
       <Types/>
       <Routes>
         <Route path="/" element={<MovieList />} />
+        <Route path="/search/:query" element={<SearchResults/>} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/action" element={<Action genreId={28} />} />
         <Route path="/drama" element={<Action genreId={28} />} />
@@ -32,6 +35,7 @@ const App = () => {
         <Route path="/tvmovie" element={<Action genreId={10770} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 };
